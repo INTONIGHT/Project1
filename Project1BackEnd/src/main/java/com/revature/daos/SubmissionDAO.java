@@ -1,0 +1,80 @@
+package com.revature.daos;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.connection.JDBCConnection;
+import com.revature.models.Grades;
+import com.revature.models.Presentations;
+
+public class SubmissionDAO implements Presentations, Grades{
+	private Connection conn = JDBCConnection.getConnection();
+	//requests has an r_id which is the user id
+	//and then an id that youll want to reference for a foreign key
+	@Override
+	public void getGrade(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void approvePresentation(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getPresentation(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void approveGrade(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	@Override
+	public void sendGrade(String grade,int approvalId) {
+		String sql = "insert into grades values(default,?,?);";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, grade);
+			ps.setInt(2, approvalId);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void sendPresentation(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	public List<Integer> getApprovalId(int id) {
+		String sql = "select * from requests where r_id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			List<Integer> temp = new ArrayList<Integer>();
+			while(rs.next()) {	
+				temp.add(rs.getInt("id"));	
+			}
+			return temp;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		List<Integer> temp = new ArrayList<Integer>();
+		temp.add(0);
+		return temp;
+	}
+
+}
