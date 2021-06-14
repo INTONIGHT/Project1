@@ -4,14 +4,25 @@ public class Employee {
 
 private int id;
 private String username,password,role;
+private double balance;
 
-	public Employee(int id,String username,String password,String role) {
+
+	public Employee() {
+		super();
+	}
+	public Employee(int id,String username,String password,String role,double reimbursement) {
 		this.id = id;
 		this.username = username;
 		this.password= password;
 		this.role = role;
+		this.balance = reimbursement;
 	}
-
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
 	public int getId() {
 		return id;
 	}
@@ -43,18 +54,19 @@ private String username,password,role;
 	public void setRole(String role) {
 		this.role = role;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(balance);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + id;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -64,6 +76,8 @@ private String username,password,role;
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
+		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
+			return false;
 		if (id != other.id)
 			return false;
 		if (password == null) {
@@ -83,10 +97,11 @@ private String username,password,role;
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
+		return "Employee [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role
+				+ ", balance=" + balance + "]";
 	}
+
 	
 }
