@@ -41,16 +41,21 @@ public class SubmissionDAO implements Presentations, Grades{
 
 	
 	@Override
-	public void sendGrade(String grade,int approvalId) {
+	public boolean sendGrade(String grade,int approvalId) {
 		String sql = "insert into grades values(default,?,?);";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, grade);
 			ps.setInt(2, approvalId);
+			boolean success = ps.execute();
+			if(success) {
+				return true;
+			}
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return false;
 	}
 
 	@Override
