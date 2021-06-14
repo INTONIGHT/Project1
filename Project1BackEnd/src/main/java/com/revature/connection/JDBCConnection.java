@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class JDBCConnection {
-
+	//ok it gets the properties file.
 	private static Connection conn = null;
 	public static Connection getConnection() {
 		try {
