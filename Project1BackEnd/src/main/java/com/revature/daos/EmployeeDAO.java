@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.connection.JDBCConnection;
 import com.revature.models.Employee;
+import com.revature.models.Requests;
 
 public class EmployeeDAO {
 	//change back to private
@@ -102,6 +104,33 @@ public class EmployeeDAO {
 		}
 		return -1;
 	}
-	
+	//get the list of requests assocaited with a certain id. then returns a list of those requests
+	public List<Requests> getRequests(int id) {
+		String sql = "select * from requests where r_id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			List<Requests> temp = new ArrayList<Requests>();
+			while(rs.next()) {
+				Requests sample = new Requests();
+				sample.setId(rs.getInt("id"));
+				sample.setUserrequest(rs.getString("userrequest"));
+				sample.setApprovalstatus(rs.getBoolean("approvalstatus"));
+				sample.setR_id(rs.getInt("r_id"));
+				sample.setRequesttype(rs.getString("requesttype"));
+				sample.setApprovalstage(rs.getString("approvalstage"));
+				sample.setReason(rs.getString("reason"));
+				sample.setAmount(rs.getInt("amount"));
+				temp.add(sample);
+				
+			}
+			return temp;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		List<Requests> temp = new ArrayList<Requests>();
+		return temp;
+	}
 	
 }
