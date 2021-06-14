@@ -9,6 +9,7 @@ import com.revature.connection.JDBCConnection;
 import com.revature.models.Employee;
 
 public class EmployeeDAO {
+	//change back to private
 	private Connection conn = JDBCConnection.getConnection();
 	//lets you log in
 	public Employee Login(String username,String password) {
@@ -51,8 +52,8 @@ public class EmployeeDAO {
 		}
 		return false;
 	}
-	public boolean approveRequest(String reason,String role) {
-		String sql = "update requests set approvalstage = ?,set reason = ?;";
+	public boolean approveRequest(String reason,String role,int id) {
+		String sql = "update requests set approvalstage = ?,set reason = ? where id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			//roles are department head direct supervisor and benco
@@ -71,6 +72,7 @@ public class EmployeeDAO {
 				break;
 			}
 			ps.setString(2, reason);
+			ps.setInt(3, id);
 			boolean success = ps.execute();
 			if(success) {
 				return true;
@@ -80,5 +82,15 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public static void main(String[] args) {
+		EmployeeDAO edao = new EmployeeDAO();
+		//getting a lot of classnot found excpetions but it works in my driver.
+		
+		
+		Employee e = new Employee();
+		e = edao.Login("Tyler", "Password");
+		System.out.println(e);
+		//edao.createRequest("test", 1, "thisis a test");
 	}
 }
