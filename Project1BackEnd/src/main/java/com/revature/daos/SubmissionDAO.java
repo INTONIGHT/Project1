@@ -18,19 +18,31 @@ public class SubmissionDAO implements Presentations, Grades{
 	
 
 	@Override
-	public void approvePresentation(int id) {
+	public boolean approvePresentation(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void getPresentation(int id) {
+	public String getPresentation(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void sendPresentation(int id) {
-		// TODO Auto-generated method stub
+	public boolean sendPresentation(String presentation,int id) {
+		String sql = "insert into presentations values(default,?,?,'empty',false);";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, presentation);
+			ps.setInt(2, id);
+			boolean success = ps.execute();
+			if(success) {
+				return true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 		
 	}
 	@Override

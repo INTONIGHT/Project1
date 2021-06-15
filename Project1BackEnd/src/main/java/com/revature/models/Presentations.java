@@ -2,8 +2,8 @@ package com.revature.models;
 
 public interface Presentations {
 
-	public void approvePresentation(int id);
-	public void getPresentation(int id);
-	public void sendPresentation(int id);
+	public boolean approvePresentation(int id);
+	public String getPresentation(int id);
+	public boolean sendPresentation(String presentation,int id);
 	
 }
