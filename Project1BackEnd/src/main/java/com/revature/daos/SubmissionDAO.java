@@ -25,8 +25,19 @@ public class SubmissionDAO implements Presentations, Grades{
 
 	@Override
 	public String getPresentation(int id) {
-		// TODO Auto-generated method stub
-		
+		String sql = "select * from presentations where approvals_id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				String temp = rs.getString("userpresentation");
+				return temp;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return "presentation not found";
 	}
 	@Override
 	public boolean sendPresentation(String presentation,int id) {
@@ -83,7 +94,8 @@ public class SubmissionDAO implements Presentations, Grades{
 		return false;
 	}
 	public String getGrade(int id) {
-		String sql = "select * from grades where id = ?;";
+		//that approvals id is which request it is it will be one to one theoretically.
+		String sql = "select * from grades where approvals_id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -97,7 +109,11 @@ public class SubmissionDAO implements Presentations, Grades{
 		}
 		return "no grade found";
 	}
-	
+	//remove this
+	public static void main(String[] args) {
+		SubmissionDAO sdao = new SubmissionDAO();
+		sdao.sendPresentation("test", 2);
+	}
 	
 
 }
