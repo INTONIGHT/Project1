@@ -132,5 +132,9 @@ public class EmployeeDAO {
 		List<Requests> temp = new ArrayList<Requests>();
 		return temp;
 	}
+	public Requests getRequest(int id,int r_id) {
+		String sql = "select * from requests where id = ? and r_id =?;";
+		
+	}
 	
 }
