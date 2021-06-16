@@ -33,6 +33,8 @@ public class EmployeeServlet extends HttpServlet{
 			System.out.println("getting requests");
 			List<Requests> requests = edao.getRequests(1);
 			System.out.println(requests);
+			//add this
+			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
 			break;
 			default:
