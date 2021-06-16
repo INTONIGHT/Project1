@@ -7,7 +7,7 @@ xhttp.send();
 function retrieveData(){
     if(xhttp.readyState == 4 && xhttp.status == 200){
         let response = xhttp.responseText;
-        //response = JSON.parse(response);
+        response = JSON.parse(response);
         console.log(response);
     }
 }

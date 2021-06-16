@@ -40,7 +40,7 @@ public class EmployeeServlet extends HttpServlet{
 			default:
 				System.out.println("default case");
 		}
-		response.getWriter().append("test");
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
