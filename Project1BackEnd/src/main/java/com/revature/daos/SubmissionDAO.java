@@ -18,8 +18,22 @@ public class SubmissionDAO implements Presentations, Grades{
 	
 
 	@Override
-	public boolean approvePresentation(int id) {
-		// TODO Auto-generated method stub
+	public boolean approvePresentation(int id,String reason,boolean approval) {
+		String sql = "update presentations set approval = ?, reason = ? where approvals_id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setBoolean(1,approval);
+			ps.setString(2,reason);
+			ps.setInt(2, id);
+			boolean success = ps.execute();
+			if(success) {
+				return true;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 		
 	}
 
@@ -58,7 +72,7 @@ public class SubmissionDAO implements Presentations, Grades{
 	}
 	@Override
 	public boolean approveGrade(int id,String reason,boolean approval) {
-		String sql = "update grades set approval = ? , reason = ? where id = ?;";
+		String sql = "update grades set approval = ? , reason = ? where approvals_id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setBoolean(1, approval);
