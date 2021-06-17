@@ -134,7 +134,28 @@ public class EmployeeDAO {
 	}
 	public Requests getRequest(int id,int r_id) {
 		String sql = "select * from requests where id = ? and r_id =?;";
-		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, r_id);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				Requests sample = new Requests();
+				sample.setId(rs.getInt("id"));
+				sample.setUserrequest(rs.getString("userrequest"));
+				sample.setApprovalstatus(rs.getBoolean("approvalstatus"));
+				sample.setR_id(rs.getInt("r_id"));
+				sample.setRequesttype(rs.getString("requesttype"));
+				sample.setApprovalstage(rs.getString("approvalstage"));
+				sample.setReason(rs.getString("reason"));
+				sample.setAmount(rs.getInt("amount"));
+				return sample;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
