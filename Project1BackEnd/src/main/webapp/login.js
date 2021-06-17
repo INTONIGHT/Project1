@@ -9,13 +9,21 @@ function login(){
        let password = document.getElementById('password').value;
        let login = {username:username,password:password};
        var test = JSON.stringify(login);
-       console.log(test);
+       //console.log(test);
    xhttp.open('POST',url);
    xhttp.send(test);
        //let login = document.getElementById('login');
+       let output = document.getElementById('data');
+       output.innerHTML = '';
        xhttp.onreadystatechange = ()=> {
            if(xhttp.status == 200 && xhttp.readyState == 4){
-            console.log(xhttp.responseText);
+            //id username password role balance.
+            let response = JSON.parse(xhttp.responseText);
+            let role = response.role;
+            //we would switch here to what we want to do
+            //dont know it yet.
+            
+            
            }};
        
        

@@ -61,7 +61,7 @@ public class EmployeeServlet extends HttpServlet{
 		Login info = this.gson.fromJson(request.getReader(), Login.class);
 		
 		Employee test = edao.Login(info.username,info.password);
-		System.out.println(test);
+		
 		
 		response.getWriter().append(gson.toJson(test));
 		break;
