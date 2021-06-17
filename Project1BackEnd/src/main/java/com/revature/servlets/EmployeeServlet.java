@@ -15,6 +15,11 @@ public class EmployeeServlet extends HttpServlet{
 		public String username;
 		public String password;
 	}
+	class Approve{
+		public int id;
+		public String reason;
+		public String role;
+	}
 	EmployeeDAO edao = new EmployeeDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
@@ -36,6 +41,8 @@ public class EmployeeServlet extends HttpServlet{
 		switch(uri) {
 		case "/requests":
 			//System.out.println("getting requests");
+			//this is hard coded right now.
+			//this might require session.
 			List<Requests> requests = edao.getRequests(1);
 			//System.out.println(requests);
 			//add this
@@ -43,6 +50,7 @@ public class EmployeeServlet extends HttpServlet{
 			response.getWriter().append(gson.toJson(requests));
 			break;
 		
+			
 			default:
 				System.out.println("default case");
 		}
@@ -65,6 +73,14 @@ public class EmployeeServlet extends HttpServlet{
 		
 		response.getWriter().append(gson.toJson(test));
 		break;
+	case "/approve":
+		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
+		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id);
+		System.out.println(info1.reason + info1.role+ info1.id);
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		if(!success) {
+			System.out.println("yeah");
+		}
 		default:{
 			System.out.println("default case");
 		}

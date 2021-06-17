@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval</title>
+</head>
+<body>
+    <form id = "approve">
+        <!-- Reason role id might need to switch on role to send it what it needs-->
+        Reason : <input type = "text"id = "reason"><br>
+        <!-- Ideally for role youd want to chose it from the user role when logging in-->
+        Role:<select class ="form-select"id = "role">
+            <option value = "directSupervisor">Direct Supervisor</option>
+            <option value = "departmentHead">Department Head</option>
+            <option value ="BenCo">Benefits Coordinator</option>
+        </select><br>
+        Id of request:<input type = "number"id = "id">
+        <button type = "button"onclick="approve()">Approve Request</button>
+    </form>
+    
+
+</body>
+<script src="approval.js"></script>
+</html>
