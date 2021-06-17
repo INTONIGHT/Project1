@@ -80,7 +80,11 @@ public class EmployeeServlet extends HttpServlet{
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		if(!success) {
 			System.out.println("yeah");
+			
 		}
+		response.getWriter().append("Hello there");
+		
+		break;
 		default:{
 			System.out.println("default case");
 		}
