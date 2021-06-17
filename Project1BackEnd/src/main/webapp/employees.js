@@ -10,14 +10,14 @@ function retrieveData(){
     if(xhttp.readyState == 4 && xhttp.status == 200){
         let response = xhttp.responseText;
         response = JSON.parse(response);
-        console.log(response);
+        //console.log(response);
         let employeeTable = document.createElement('table');
     employeeTable.id = 'employeeTable';
 
     let thRow = document.createElement('tr');
-    let tHeaders = ['id','requesttype','userrequest',
-                    'approvalstage','approvalstatus','amount',
-                'reason'    ];
+    let tHeaders = ['Id','Request Type','User Request',
+                    'Approval Stage','Approval Status','Amount',
+                'Reason'    ];
            for( let h of tHeaders){
                let th = document.createElement('th');
                th.innerHTML = h;
@@ -26,18 +26,35 @@ function retrieveData(){
            employeeTable.append(thRow);
            for(let employee of response){
               let tr = document.createElement('tr');
-               for(let name of tHeaders){
-                let td = document.createElement('td');
-                let temp1 = name;
-              
-                let temp = employee.temp1;
-                td.innerHTML = temp;
-                tr.appendChild(td);
-               }
+                //id
+                let tdId = document.createElement('td');
+               tdId.innerHTML = employee.id;
+               tr.appendChild(tdId);
+                //Request type
+                let tRt = document.createElement('td');
+                tRt.innerHTML = employee.requesttype;
+                tr.appendChild(tRt);
+                //userrequest
+                let tUr = document.createElement('td');
+                tUr.innerHTML = employee.userrequest;
+                tr.appendChild(tUr);
+                //approvalstage
+                let tAs = document.createElement('td');
+                tAs.innerHTML = employee.approvalstage;
+                tr.appendChild(tAs);
+                //approvalstatus
+                let tA = document.createElement('td');
+                tA.innerHTML = employee.approvalstatus;
+                tr.appendChild(tA);
+                //amount
+                let tAm = document.createElement('td');
+                tAm.innerHTML = employee.amount;
+                tr.appendChild(tAm);
+                //reason
+                let tR = document.createElement('td');
+                tR.innerHTML = employee.reason;
+                tr.appendChild(tR);
                employeeTable.appendChild(tr);
-            //    let tdId = document.createElement('td');
-            //    tdId.innerHTML = employee.id;
-            //    tr.appendChild(tdId);
            }
            dataSection.appendChild(employeeTable);
     }

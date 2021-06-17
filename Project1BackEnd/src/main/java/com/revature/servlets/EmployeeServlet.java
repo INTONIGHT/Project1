@@ -17,7 +17,7 @@ public class EmployeeServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
-		System.out.println(uri);
+		//System.out.println(uri);
 		//for get requests 
 		/**
 		 * localhost 8080/EMployeeServelt/requests get allr equests
@@ -30,9 +30,9 @@ public class EmployeeServlet extends HttpServlet{
 
 		switch(uri) {
 		case "/requests":
-			System.out.println("getting requests");
+			//System.out.println("getting requests");
 			List<Requests> requests = edao.getRequests(1);
-			System.out.println(requests);
+			//System.out.println(requests);
 			//add this
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
