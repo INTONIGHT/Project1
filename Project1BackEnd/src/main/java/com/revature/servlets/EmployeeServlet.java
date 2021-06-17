@@ -11,9 +11,14 @@ import com.google.gson.Gson;
 import com.revature.daos.EmployeeDAO;
 
 public class EmployeeServlet extends HttpServlet{
+	class Login {
+		public String username;
+		public String password;
+	}
 	EmployeeDAO edao = new EmployeeDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
+	
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
@@ -37,11 +42,7 @@ public class EmployeeServlet extends HttpServlet{
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
 			break;
-		case "/login":
-			Employee test = edao.Login(response.getHeader("username"), response.getHeader("password"));
-			response.setHeader("Access-Control-Allow-Origin", "*");
-			response.getWriter().append(gson.toJson(test));
-			break;
+		
 			default:
 				System.out.println("default case");
 		}
@@ -49,7 +50,25 @@ public class EmployeeServlet extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		response.getWriter().append("Post Request");
+		String uri = request.getRequestURI();
+		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Content-Type", "application/json");
+		switch(uri) {
+		
+		
+	case "/login":
+		Login info = this.gson.fromJson(request.getReader(), Login.class);
+		
+		Employee test = edao.Login(info.username,info.password);
+		System.out.println(test);
+		
+		response.getWriter().append(gson.toJson(test));
+		break;
+		default:{
+			System.out.println("default case");
+		}
+		}
 	}
 	
 }
