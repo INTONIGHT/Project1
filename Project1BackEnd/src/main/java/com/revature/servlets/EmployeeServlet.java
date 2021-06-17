@@ -37,6 +37,11 @@ public class EmployeeServlet extends HttpServlet{
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
 			break;
+		case "/login":
+			Employee test = edao.Login(response.getHeader("username"), response.getHeader("password"));
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.getWriter().append(gson.toJson(test));
+			break;
 			default:
 				System.out.println("default case");
 		}
