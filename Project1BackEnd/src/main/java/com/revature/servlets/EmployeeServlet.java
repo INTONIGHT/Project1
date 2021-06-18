@@ -59,11 +59,12 @@ public class EmployeeServlet extends HttpServlet{
 		switch(uri) {
 		
 		case "/requests":
-			getRequest info2 = this.gson.fromJson(request.getReader(),getRequest.class);
+			//getRequest info2 = this.gson.fromJson(request.getReader(),getRequest.class);
+			int info2 = this.gson.fromJson(request.getReader(),Integer.class);
+			//System.out.println(info2);
+			//int test_id = info2;
 			System.out.println(info2);
-			int test_id = (info2.user_id);
-			System.out.println(test_id);
-			List<Requests> requests = edao.getRequests(test_id);			
+			List<Requests> requests = edao.getRequests(info2);			
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
 			break;

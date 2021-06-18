@@ -3,11 +3,11 @@ let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/requests";
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = retrieveData;
 xhttp.open('POST',url);
-let user_id = document.getElementById('id').value;
-let id = {id:user_id};
+let user_id = document.getElementById('user_id').value;
 
-id = JSON.stringify(id);
-console.log(id);
+
+id = JSON.stringify(user_id);
+//console.log(id);
 xhttp.send(id);
 
 
