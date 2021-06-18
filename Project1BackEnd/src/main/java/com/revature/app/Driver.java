@@ -4,15 +4,16 @@ import com.revature.daos.EmployeeDAO;
 import com.revature.models.Employee;
 
 public class Driver {
-	public Employee e = new Employee();
+	//public Employee ey = new Employee();
 	EmployeeDAO edao = new EmployeeDAO();
-	public double getReimbursementAmount(double account,String type,double amtReq,String role) {
+	public double getReimbursementAmount(Employee e,String type,double amtReq,String role) {
 		double tempvalue = 1.0;
 		switch(type) {
 		//make sure your options are called this.
 		case "UniCourse":
 			tempvalue = amtReq * .8;
 			break;
+			
 		case "Seminars":
 			tempvalue = amtReq * .6;
 			break;
@@ -32,7 +33,7 @@ public class Driver {
 		//i have to create a function that grabs any pending approvals.
 		//as well as awarded.
 		double available = e.getBalance() - edao.getReimbursement(e.getId());
-		if(available > tempvalue) {
+		if(tempvalue > available) {
 			if(role.equals("BenCo")) {
 				return tempvalue;
 				

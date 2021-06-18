@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.revature.models.*;
 import com.google.gson.Gson;
+import com.revature.app.Driver;
 import com.revature.daos.EmployeeDAO;
 
 public class EmployeeServlet extends HttpServlet{
@@ -22,6 +23,10 @@ public class EmployeeServlet extends HttpServlet{
 	}
 	class getRequest{
 		public int user_id;
+	}
+	class createRequest{
+		public String type;
+		public int amtReq;
 	}
 	EmployeeDAO edao = new EmployeeDAO();
 	private Gson gson = new Gson();
@@ -63,7 +68,7 @@ public class EmployeeServlet extends HttpServlet{
 			int info2 = this.gson.fromJson(request.getReader(),Integer.class);
 			//System.out.println(info2);
 			//int test_id = info2;
-			System.out.println(info2);
+			//System.out.println(info2);
 			List<Requests> requests = edao.getRequests(info2);			
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.getWriter().append(gson.toJson(requests));
@@ -86,7 +91,13 @@ public class EmployeeServlet extends HttpServlet{
 			
 		}
 		response.getWriter().append("Hello there");
-		
+		break;
+	case "/createRequest":
+		Driver dr = new Driver();
+		//ideally you want to get from session or something like that
+		Employee e = new Employee(1,"Tyler","Password","Employee",1000);
+		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
+		dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
 		break;
 		default:{
 			System.out.println("default case");
