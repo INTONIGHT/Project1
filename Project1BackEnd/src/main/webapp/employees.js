@@ -2,8 +2,15 @@ function getData(){
 let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/requests";
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = retrieveData;
-xhttp.open('GET',url);
-xhttp.send();
+xhttp.open('POST',url);
+let user_id = document.getElementById('id').value;
+let id = {id:user_id};
+
+id = JSON.stringify(id);
+console.log(id);
+xhttp.send(id);
+
+
 function retrieveData(){
     let dataSection = document.getElementById('data');
     dataSection.innerHTML = '';

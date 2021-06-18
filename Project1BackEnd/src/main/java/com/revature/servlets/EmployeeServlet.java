@@ -20,6 +20,9 @@ public class EmployeeServlet extends HttpServlet{
 		public String reason;
 		public String role;
 	}
+	class getRequest{
+		public int user_id;
+	}
 	EmployeeDAO edao = new EmployeeDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
@@ -39,16 +42,7 @@ public class EmployeeServlet extends HttpServlet{
 		 uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 
 		switch(uri) {
-		case "/requests":
-			//System.out.println("getting requests");
-			//this is hard coded right now.
-			//this might require session.
-			List<Requests> requests = edao.getRequests(1);
-			//System.out.println(requests);
-			//add this
-			response.setHeader("Access-Control-Allow-Origin", "*");
-			response.getWriter().append(gson.toJson(requests));
-			break;
+		
 		
 			
 			default:
@@ -64,7 +58,15 @@ public class EmployeeServlet extends HttpServlet{
 		response.setHeader("Content-Type", "application/json");
 		switch(uri) {
 		
-		
+		case "/requests":
+			getRequest info2 = this.gson.fromJson(request.getReader(),getRequest.class);
+			System.out.println(info2);
+			int test_id = (info2.user_id);
+			System.out.println(test_id);
+			List<Requests> requests = edao.getRequests(test_id);			
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.getWriter().append(gson.toJson(requests));
+			break;
 	case "/login":
 		Login info = this.gson.fromJson(request.getReader(), Login.class);
 		
