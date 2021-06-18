@@ -38,7 +38,7 @@ public class EmployeeDAO {
 		return null;
 	}
 	//request type is based on the different types.
-	public boolean createRequest(String request,int userid,String requestType,int amt) {
+	public boolean createRequest(String request,int userid,String requestType,double amt) {
 		String sql = "insert into requests values(default,?,false,?,?,'none','empty',?);";
 		
 		try {
@@ -46,7 +46,7 @@ public class EmployeeDAO {
 			ps.setString(1, request);
 			ps.setInt(2, userid);
 			ps.setString(3, requestType);
-			ps.setInt(4, amt);
+			ps.setDouble(4, amt);
 			boolean success = ps.execute();
 			if(success) {
 				return true;

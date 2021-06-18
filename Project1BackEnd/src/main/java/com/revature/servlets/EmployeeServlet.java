@@ -27,6 +27,7 @@ public class EmployeeServlet extends HttpServlet{
 	class createRequest{
 		public String type;
 		public int amtReq;
+		public String request;
 	}
 	EmployeeDAO edao = new EmployeeDAO();
 	private Gson gson = new Gson();
@@ -97,7 +98,8 @@ public class EmployeeServlet extends HttpServlet{
 		//ideally you want to get from session or something like that
 		Employee e = new Employee(1,"Tyler","Password","Employee",1000);
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
-		dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
 		break;
 		default:{
 			System.out.println("default case");

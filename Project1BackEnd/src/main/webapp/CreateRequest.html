@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Request</title>
+</head>
+<body>
+    Request Type: <select class = "form-select"id = "type">
+        <option value = "UniCourse">University Courses</option>
+        <option value = "Seminars">Seminars</option>
+        <option value = "CertPrep">Certification Preparation Classes</option>
+        <option value = "Certification">Certification</option>
+        <option value = "TechTraining">Technical Training</option>
+        <option value = "Other">Other</option>
+    </select>
+    Amount Requested: <input type = "number" id = "amount">
+    Request Body:<input type = "text"id ="request">
+    <button type = "button" onclick ="sendRequest()">Send Request</button>
+</body>
+<script src = createRequest.js></script>
+</html>
