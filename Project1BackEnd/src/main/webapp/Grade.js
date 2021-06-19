@@ -19,16 +19,31 @@ xhttp.onreadystatechange = () =>{
 function getGrade(){
 url = url + "getGrade"
 let id = document.getElementById('approval_id').value;
+let data = document.getElementById('output');
 xhttp.open('POST',url);
 id = JSON.stringify(id);
 xhttp.send(id);
 xhttp.onreadystatechange = () =>{
     if(xhttp.status == 200 && xhttp.readyState == 4){
         let response = xhttp.responseText;
-        console.log(response);
+        data.innerHTML = response;
     }
 }
 }
 function approveGrade(){
 url = url + "approveGrade"
+let approval = document.getElementById("approve").value;
+let id = document.getElementById('approval_id');
+let reason = document.getElementById('reason');
+xhttp.open('POST',url);
+let approve = {id:id,reason:reason,approval:approval};
+approve = JSON.stringify(approve);
+xhttp.send(approve);
+xhttp.onreadystatechange = () =>{
+    if(xhttp.status == 200 && xhttp.readyState == 4){
+let response = xhttp.responseText;
+console.log(response);
+    }
+}
+
 }
