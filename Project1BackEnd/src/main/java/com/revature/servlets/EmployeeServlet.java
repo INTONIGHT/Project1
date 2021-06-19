@@ -54,11 +54,7 @@ public class EmployeeServlet extends HttpServlet{
 		response.setHeader("Content-Type", "application/json");
 
 		switch(uri) {
-		case "/getGrade":
-			 int approval_id = this.gson.fromJson(request.getReader(),Integer.class);
-			 String grade = sdao.getGrade(approval_id);
-			 response.getWriter().append(gson.toJson(grade));
-			 break;
+		
 			
 			default:
 				System.out.println("default case");
@@ -128,6 +124,11 @@ public class EmployeeServlet extends HttpServlet{
 			System.out.println("grade approved");
 		}
 		break;
+	case "/getGrade":
+		 int approval_id = this.gson.fromJson(request.getReader(),Integer.class);
+		 String grade = sdao.getGrade(approval_id);
+		 response.getWriter().append(gson.toJson(grade));
+		 break;
 	case "/createPresentation":
 		//ideally this would take a file but not sure yet.
 		break;

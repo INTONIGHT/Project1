@@ -18,6 +18,16 @@ xhttp.onreadystatechange = () =>{
 }
 function getGrade(){
 url = url + "getGrade"
+let id = document.getElementById('approval_id').value;
+xhttp.open('POST',url);
+id = JSON.stringify(id);
+xhttp.send(id);
+xhttp.onreadystatechange = () =>{
+    if(xhttp.status == 200 && xhttp.readyState == 4){
+        let response = xhttp.responseText;
+        console.log(response);
+    }
+}
 }
 function approveGrade(){
 url = url + "approveGrade"
