@@ -10,6 +10,7 @@ import com.revature.models.*;
 import com.google.gson.Gson;
 import com.revature.app.Driver;
 import com.revature.daos.EmployeeDAO;
+import com.revature.daos.SubmissionDAO;
 
 public class EmployeeServlet extends HttpServlet{
 	class Login {
@@ -29,27 +30,35 @@ public class EmployeeServlet extends HttpServlet{
 		public int amtReq;
 		public String request;
 	}
+	class Grade{
+		public int id;
+		public String reason;
+		public boolean approval;
+		public String grade;
+	}
+	class Presentation{
+		public int id;
+		public String reason;
+		public boolean approval;
+	}
 	EmployeeDAO edao = new EmployeeDAO();
+	SubmissionDAO sdao = new SubmissionDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
 	
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
-		//System.out.println(uri);
-		//for get requests 
-		/**
-		 * localhost 8080/EMployeeServelt/requests get allr equests
-		 * if we do cats/id get a request by id.
-		 *
-		 */
-		
-		//http://localhost:8080/Project1BackEnd/EmployeeServlet
-		 uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
+		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Content-Type", "application/json");
 
 		switch(uri) {
-		
-		
+		case "/getGrade":
+			 int approval_id = this.gson.fromJson(request.getReader(),Integer.class);
+			 String grade = sdao.getGrade(approval_id);
+			 response.getWriter().append(gson.toJson(grade));
+			 break;
 			
 			default:
 				System.out.println("default case");
@@ -100,6 +109,27 @@ public class EmployeeServlet extends HttpServlet{
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
 		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
+		break;
+	case "/createGrade":
+		Grade g = this.gson.fromJson(request.getReader(), Grade.class);
+		System.out.println(g.grade + g.id);
+		
+		boolean b = sdao.sendGrade(g.grade, g.id);
+		
+		if(b) {
+			System.out.println("yeah");
+		}
+		break;
+	case "/approveGrade":
+		Grade g1 = this.gson.fromJson(request.getReader(), Grade.class);
+		
+		boolean b2 = sdao.approveGrade(g1.id, g1.reason, g1.approval);
+		if(b2) {
+			System.out.println("grade approved");
+		}
+		break;
+	case "/createPresentation":
+		//ideally this would take a file but not sure yet.
 		break;
 		default:{
 			System.out.println("default case");

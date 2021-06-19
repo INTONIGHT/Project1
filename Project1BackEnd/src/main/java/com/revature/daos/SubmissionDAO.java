@@ -124,10 +124,7 @@ public class SubmissionDAO implements Presentations, Grades{
 		return "no grade found";
 	}
 	//remove this
-	public static void main(String[] args) {
-		SubmissionDAO sdao = new SubmissionDAO();
-		sdao.sendPresentation("test", 2);
-	}
+	
 	
 
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+</head>
+<body>
+    Grade:<input type="text" id = "grade">
+    Id of request: <input type = "number"id = "approval_id">
+    Reason: <input type = "text"id ="reason">
+    Approval:<input type = "radio"id = "approve"value ="approve">
+    <label for ="approve">Approve</label>
+    <input type = "radio"id ="reject"value ="reject">
+    <label for ="reject">Reject</label>
+        <!-- I think Ill put the employee stuff and approval stuff in the same page
+        but ideally it would hide based on role I dont know how to do that yet.-->
+      <button type ="button"onclick = "sendGrade()">Send Grade</button>      
+      <button type = "button"onclick = "getGrade()">Get Grade</button>  
+      <button type = "button"onclick = "approveGrade()">Approve Grade</button> 
+
+</body>
+<script src = "Grade.js"></script>
+</html>
