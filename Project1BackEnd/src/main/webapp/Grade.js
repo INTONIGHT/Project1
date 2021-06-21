@@ -2,6 +2,7 @@ url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/";
 xhttp = new XMLHttpRequest();
 function sendGrade(){
 url = url + "createGrade";
+console.log(url);
 let grade = document.getElementById('grade');
 let id = document.getElementById('approval_id').valu
 let gradeSubmission = {grade:grade,id:id,approval:false,reason:"none"};
@@ -14,7 +15,13 @@ xhttp.onreadystatechange = () =>{
         console.log(response);
     }
 }
-
+/**var f = document.getElementById("form")
+let spform = {}
+let formData = new FormData(f)
+for (var [key, value] of formData.entries()) { 
+    spform[key] = value
+}
+let body_content = JSON.stringify(spform) */
 }
 function getGrade(){
 url = url + "getGrade"
@@ -29,6 +36,9 @@ xhttp.onreadystatechange = () =>{
         data.innerHTML = response;
     }
 }
+//function newrequest() {
+//     window.location = "/Project1/html/Request.html"
+// }
 }
 function approveGrade(){
 url = url + "approveGrade"

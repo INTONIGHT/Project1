@@ -40,6 +40,7 @@ public class EmployeeServlet extends HttpServlet{
 		public int id;
 		public String reason;
 		public boolean approval;
+		public String presentation;
 	}
 	EmployeeDAO edao = new EmployeeDAO();
 	SubmissionDAO sdao = new SubmissionDAO();
@@ -117,9 +118,17 @@ public class EmployeeServlet extends HttpServlet{
 		}
 		break;
 	case "/approveGrade":
-		Grade g1 = this.gson.fromJson(request.getReader(), Grade.class);
+		//this didnt work to fix it
+		int user_id = this.gson.fromJson(request.getReader(),Integer.class);
+		String reason = this.gson.fromJson(request.getReader(), String.class);
+		boolean approval = this.gson.fromJson(request.getReader(),boolean.class);
+		//ObjectMapper om = new ObjectMapper();
+		//SPForm spf = om.readValue(request.getReader(), SPForm.class);
+		/**
+		 * 
+		 */
 		
-		boolean b2 = sdao.approveGrade(g1.id, g1.reason, g1.approval);
+		boolean b2 = sdao.approveGrade(user_id,reason,approval);
 		if(b2) {
 			System.out.println("grade approved");
 		}
@@ -130,9 +139,17 @@ public class EmployeeServlet extends HttpServlet{
 		 response.getWriter().append(gson.toJson(grade));
 		 break;
 	case "/createPresentation":
-		//ideally this would take a file but not sure yet.
+		Presentation p = this.gson.fromJson(request.getReader(),Presentation.class);
+		boolean b1 = sdao.sendPresentation(p.presentation, p.id);
 		break;
-		default:{
+	case "/getPresentation":
+		int presentation_id = this.gson.fromJson(request.getReader(), Integer.class);
+		String presentation = sdao.getPresentation(presentation_id);
+		response.getWriter().append(gson.toJson(presentation));
+		break;
+	case "/approvePresentation":
+		
+	default:{
 			System.out.println("default case");
 		}
 		}
