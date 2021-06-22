@@ -122,11 +122,6 @@ public class EmployeeServlet extends HttpServlet{
 		int user_id = this.gson.fromJson(request.getReader(),Integer.class);
 		String reason = this.gson.fromJson(request.getReader(), String.class);
 		boolean approval = this.gson.fromJson(request.getReader(),boolean.class);
-		//ObjectMapper om = new ObjectMapper();
-		//SPForm spf = om.readValue(request.getReader(), SPForm.class);
-		/**
-		 * 
-		 */
 		
 		boolean b2 = sdao.approveGrade(user_id,reason,approval);
 		if(b2) {
@@ -148,6 +143,8 @@ public class EmployeeServlet extends HttpServlet{
 		response.getWriter().append(gson.toJson(presentation));
 		break;
 	case "/approvePresentation":
+		Presentation p2 = this.gson.fromJson(request.getReader(), Presentation.class);
+		boolean b3 = sdao.approvePresentation(p2.id, p2.presentation, p2.approval);
 		
 	default:{
 			System.out.println("default case");
