@@ -14,14 +14,17 @@
 <body>
     Id of Presentation <input type = "number" id = "approval_id"><br>
     Reason: <input type = "text" id = "reason"><br>
-    Approval<input type="radio" id="approve" value ="approve"><br>
-    Presentation: <input type = "text"id ="presentation"><br>
-    <label for ="approve"> Approve</label><br>
-    <input type = "radio"id="reject"value="reject">
+    Approval
+    <input type="radio" id="approve" value ="approve"name ="approve">
+
+    <label for ="approve"> Approve</label>
+    <input type = "radio"id="reject"value="reject"name ="approve">
     <label for ="reject">Reject</label><br>
+    Presentation: <input type = "text"id ="presentation"><br>
     <button type = "button" onclick = "sendPresentation()">Send Presentation</button>
     <button type = "button" onclick = "getPresentation()"> Get presentation</button>
     <button type = "button" onclick = "approvePresentation()">Approve Presentation</button>
+    <div id ="output"></div>
 </body>
 <script src = 'Presentation.js'></script>
 </html>

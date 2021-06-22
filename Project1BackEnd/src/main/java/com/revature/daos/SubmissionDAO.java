@@ -19,12 +19,12 @@ public class SubmissionDAO implements Presentations, Grades{
 
 	@Override
 	public boolean approvePresentation(int id,String reason,boolean approval) {
-		String sql = "update presentations set approval = ?, reason = ? where approvals_id = ?;";
+		String sql = "update presentations set approval = ?, reason = ? where id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setBoolean(1,approval);
 			ps.setString(2,reason);
-			ps.setInt(2, id);
+			ps.setInt(3, id);
 			boolean success = ps.execute();
 			if(success) {
 				return true;
