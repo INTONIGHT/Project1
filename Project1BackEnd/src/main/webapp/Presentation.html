@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--public int id;
+		public String reason;
+		public boolean approval;
+		public String presentation;
+    is what is expected-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentations</title>
+</head>
+<body>
+    Id of Presentation <input type = "number" id = "approval_id"><br>
+    Reason: <input type = "text" id = "reason"><br>
+    Approval<input type="radio" id="approve" value ="approve"><br>
+    Presentation: <input type = "text"id ="presentation"><br>
+    <label for ="approve"> Approve</label><br>
+    <input type = "radio"id="reject"value="reject">
+    <label for ="reject">Reject</label><br>
+    <button type = "button" onclick = "sendPresentation()">Send Presentation</button>
+    <button type = "button" onclick = "getPresentation()"> Get presentation</button>
+    <button type = "button" onclick = "approvePresentation()">Approve Presentation</button>
+</body>
+<script src = 'Presentation.js'></script>
+</html>
