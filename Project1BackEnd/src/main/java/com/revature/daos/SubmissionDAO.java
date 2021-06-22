@@ -72,7 +72,7 @@ public class SubmissionDAO implements Presentations, Grades{
 	}
 	@Override
 	public boolean approveGrade(int id,String reason,boolean approval) {
-		String sql = "update grades set approval = ? , reason = ? where approvals_id = ?;";
+		String sql = "update grades set approval = ? , reason = ? where id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setBoolean(1, approval);

@@ -45,8 +45,13 @@ xhttp.onreadystatechange = () =>{
 function approveGrade(){
 url = url + "approveGrade"
 let approval = document.getElementById("approve").value;
-let id = document.getElementById('approval_id');
-let reason = document.getElementById('reason');
+if(approval == "approve"){
+    approval = true;
+}else{
+    approval = false;
+}
+let id = document.getElementById('approval_id').value;
+let reason = document.getElementById('reason').value;
 xhttp.open('POST',url);
 let approve = {id:id,reason:reason,approval:approval};
 approve = JSON.stringify(approve);

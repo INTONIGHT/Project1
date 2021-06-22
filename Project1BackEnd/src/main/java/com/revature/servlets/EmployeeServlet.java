@@ -109,7 +109,7 @@ public class EmployeeServlet extends HttpServlet{
 		break;
 	case "/createGrade":
 		Grade g = this.gson.fromJson(request.getReader(), Grade.class);
-		System.out.println(g.grade + g.id);
+		//System.out.println(g.grade + g.id);
 		
 		boolean b = sdao.sendGrade(g.grade, g.id);
 		
@@ -119,11 +119,9 @@ public class EmployeeServlet extends HttpServlet{
 		break;
 	case "/approveGrade":
 		//this didnt work to fix it
-		int user_id = this.gson.fromJson(request.getReader(),Integer.class);
-		String reason = this.gson.fromJson(request.getReader(), String.class);
-		boolean approval = this.gson.fromJson(request.getReader(),boolean.class);
+		Grade g1 = this.gson.fromJson(request.getReader(), Grade.class);
 		
-		boolean b2 = sdao.approveGrade(user_id,reason,approval);
+		boolean b2 = sdao.approveGrade(g1.id,g1.reason,g1.approval);
 		if(b2) {
 			System.out.println("grade approved");
 		}
