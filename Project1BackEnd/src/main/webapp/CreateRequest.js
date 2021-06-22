@@ -16,5 +16,7 @@ function sendRequest(){
         }
     }
 }
-
+function goToRequests(){
+    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Employee.html";
+}
 
