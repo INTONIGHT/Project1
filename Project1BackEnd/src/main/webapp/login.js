@@ -26,6 +26,8 @@ function login(){
             console.log(role);
             if(role == "Employee"){
                window.location.href="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/CreateRequest.html";
+            }if(role == "directSupervisor"||role == "departmentHead"||role == "BenCo"){
+                window.location.href ="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Approval.html";
             }
            }};
        
