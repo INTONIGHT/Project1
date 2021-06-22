@@ -30,7 +30,8 @@ function login(){
                 window.location.href ="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Approval.html";
             }
            }};
-       
+       //Employee [id=1, username=Tyler, password=Password, role=Employee, balance=1000.0]
+       //delete that
        
        
    

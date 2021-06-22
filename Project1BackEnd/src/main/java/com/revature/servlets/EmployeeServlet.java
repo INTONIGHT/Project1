@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet{
 		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
-		 session = request.getSession(); 
+		session = request.getSession(); 
 		switch(uri) {
 		
 		case "/requests":
@@ -88,8 +88,10 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Employee test = edao.Login(info.username,info.password);
 		
-		
+		session.setAttribute("login", test);
+		System.out.println(session.getAttribute("login"));
 		response.getWriter().append(gson.toJson(test));
+		
 		break;
 	case "/approve":
 		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
@@ -106,7 +108,8 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Driver dr = new Driver();
 		//ideally you want to get from session or something like that
-		Employee e = new Employee(1,"Tyler","Password","Employee",1000);
+		Employee e = (Employee) session.getAttribute("login");
+		System.out.println(session.getAttribute("login"));
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
