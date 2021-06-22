@@ -3,9 +3,11 @@ xhttp = new XMLHttpRequest();
 function sendGrade(){
 url = url + "createGrade";
 console.log(url);
-let grade = document.getElementById('grade');
-let id = document.getElementById('approval_id').valu
-let gradeSubmission = {grade:grade,id:id,approval:false,reason:"none"};
+let grade = document.getElementById('grade').value;
+let id = document.getElementById('approval_id').value;
+let gradeSubmission = {id:id,grade:grade};
+console.log(grade , id);
+//same field names
 gradeSubmission = JSON.stringify(gradeSubmission);
 xhttp.open('POST',url);
 xhttp.send(gradeSubmission);
