@@ -100,11 +100,15 @@ public class EmployeeServlet extends HttpServlet{
 		response.getWriter().append("Hello there");
 		break;
 	case "/createRequest":
+		
 		Driver dr = new Driver();
 		//ideally you want to get from session or something like that
 		Employee e = new Employee(1,"Tyler","Password","Employee",1000);
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
+		
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		//uncomment this just to not populate my database
+		System.out.println(amt);
 		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
 		break;
 	case "/createGrade":

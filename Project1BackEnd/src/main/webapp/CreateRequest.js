@@ -3,8 +3,9 @@ function sendRequest(){
     let xhttp = new XMLHttpRequest();
     let type = document.getElementById('type').value;
     let amount = document.getElementById('amount').value;
+    
     let request = document.getElementById('request').value;
-    let body = {type:type,amount:amount,request:request};
+    let body = {type:type,amtReq:amount,request:request};
     body = JSON.stringify(body);
     xhttp.open('POST',url);
     xhttp.send(body);
