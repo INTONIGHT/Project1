@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.revature.connection.JDBCConnection;
 import com.revature.models.Grades;
 import com.revature.models.Presentations;

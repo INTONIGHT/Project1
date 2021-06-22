@@ -48,7 +48,7 @@ public class EmployeeServlet extends HttpServlet{
 	SubmissionDAO sdao = new SubmissionDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
-	
+	public static HttpSession session;
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet{
 		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
-		  
+		 session = request.getSession(); 
 		switch(uri) {
 		
 		case "/requests":
@@ -149,7 +149,7 @@ public class EmployeeServlet extends HttpServlet{
 		break;
 	case "/approvePresentation":
 		Presentation p2 = this.gson.fromJson(request.getReader(), Presentation.class);
-		System.out.println(p2.approval);
+		
 		boolean b3 = sdao.approvePresentation(p2.id, p2.reason, p2.approval);
 		break;
 	default:{
