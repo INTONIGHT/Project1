@@ -1,7 +1,7 @@
-url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/";
+//url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/";
 xhttp = new XMLHttpRequest();
 function sendGrade(){
-url = url + "createGrade";
+url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/createGrade";
 console.log(url);
 let grade = document.getElementById('grade').value;
 let id = document.getElementById('approval_id').value;
@@ -26,7 +26,7 @@ for (var [key, value] of formData.entries()) {
 let body_content = JSON.stringify(spform) */
 }
 function getGrade(){
-url = url + "getGrade"
+url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getGrade"
 let id = document.getElementById('approval_id').value;
 let data = document.getElementById('output');
 xhttp.open('POST',url);
@@ -43,7 +43,7 @@ xhttp.onreadystatechange = () =>{
 // }
 }
 function approveGrade(){
-url = url + "approveGrade"
+url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/approveGrade"
 let approval = document.getElementById("approve").value;
 if(approval == "approve"){
     approval = true;
