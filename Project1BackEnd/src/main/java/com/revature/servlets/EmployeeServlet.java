@@ -135,7 +135,7 @@ public class EmployeeServlet extends HttpServlet{
 		 break;
 	case "/createPresentation":
 		Presentation p = this.gson.fromJson(request.getReader(),Presentation.class);
-		boolean b1 = sdao.sendPresentation(p.presentation, p.id);
+		boolean b1 = sdao.sendPresentation( p.id,p.presentation);
 		break;
 	case "/getPresentation":
 		int presentation_id = this.gson.fromJson(request.getReader(), Integer.class);
@@ -145,7 +145,7 @@ public class EmployeeServlet extends HttpServlet{
 	case "/approvePresentation":
 		Presentation p2 = this.gson.fromJson(request.getReader(), Presentation.class);
 		boolean b3 = sdao.approvePresentation(p2.id, p2.presentation, p2.approval);
-		
+		break;
 	default:{
 			System.out.println("default case");
 		}

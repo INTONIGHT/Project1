@@ -54,7 +54,7 @@ public class SubmissionDAO implements Presentations, Grades{
 		return "presentation not found";
 	}
 	@Override
-	public boolean sendPresentation(String presentation,int id) {
+	public boolean sendPresentation(int id,String presentation) {
 		String sql = "insert into presentations values(default,?,?,'empty',false);";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
