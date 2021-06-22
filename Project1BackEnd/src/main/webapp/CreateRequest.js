@@ -19,4 +19,9 @@ function sendRequest(){
 function goToRequests(){
     window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Employee.html";
 }
-
+function goToGrades(){
+    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Grade.html"
+}
+function goToPresentations(){
+    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Presentation.html"
+}
