@@ -12,6 +12,8 @@
     <title>Presentations</title>
 </head>
 <body>
+  <h3> Benefits Corporation</h3>
+  <div id ="container">
     Id of Presentation <input type = "number" id = "approval_id"><br>
     Reason: <input type = "text" id = "reason"><br>
     Approval
@@ -21,11 +23,13 @@
     <input type = "radio"id="reject"value="reject"name ="approve">
     <label for ="reject">Reject</label><br>
     Presentation: <input type = "text"id ="presentation"><br>
-    <button type = "button" onclick = "sendPresentation()">Send Presentation</button>
-    <button type = "button" onclick = "getPresentation()"> Get presentation</button>
-    <button type = "button" onclick = "approvePresentation()">Approve Presentation</button>
+    <button type = "button" onclick = "sendPresentation()">Send Presentation</button><br>
+    <button type = "button" onclick = "getPresentation()"> Get presentation</button><br>
+    <button type = "button" onclick = "approvePresentation()">Approve Presentation</button><br>
     <button type ="button"onclick = "goToRequest()">Go to Requests</button>
+  </div>
     <div id ="output"></div>
 </body>
 <script src = 'Presentation.js'></script>
+<link rel = "stylesheet"href="styles.css">
 </html>
