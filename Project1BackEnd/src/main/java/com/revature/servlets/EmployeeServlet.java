@@ -89,7 +89,7 @@ public class EmployeeServlet extends HttpServlet{
 		Employee test = edao.Login(info.username,info.password);
 		
 		session.setAttribute("login", test);
-		System.out.println(session.getAttribute("login"));
+		
 		response.getWriter().append(gson.toJson(test));
 		
 		break;

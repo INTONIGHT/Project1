@@ -9,8 +9,12 @@ h1{
 }
 h3{
     position: relative;
-    left:300px
+    left:300px;
+    color: rgb(29, 70, 5);
 }
 body{
     background-color: rgb(72, 176, 236);
+}
+#login{
+    color:blueviolet;
 }

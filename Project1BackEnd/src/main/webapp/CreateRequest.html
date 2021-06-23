@@ -7,6 +7,7 @@
     <title>Create a Request</title>
 </head>
 <body>
+    <div id = "container">
     Request Type: <select class = "form-select"id = "type">
         <option value = "UniCourse">University Courses</option>
         <option value = "Seminars">Seminars</option>
@@ -17,11 +18,12 @@
     </select><br>
     Amount Requested: <input type = "number" id = "amount"><br>
     Request Body:<input type = "text"id ="request"><br>
-    <button type = "button" onclick ="sendRequest()">Send Request</button>
-    <button type = "button"onclick ="goToRequests()">Go To Requests Page</button>
-    <button type = "button"onclick = "goToGrades()">Go to submit a Grade</button>
+    <button type = "button" onclick ="sendRequest()">Send Request</button><br>
+    <button type = "button"onclick ="goToRequests()">Go To Requests Page</button><br>
+    <button type = "button"onclick = "goToGrades()">Go to submit a Grade</button><br>
     <button type = "button"onclick = "goToPresentations()">Go to submit a Presentation</button><br>
     <button type = "button"onclick ="logout()">Logout</button>
+</div>
 </body>
 <script src = createRequest.js></script>
 </html>
