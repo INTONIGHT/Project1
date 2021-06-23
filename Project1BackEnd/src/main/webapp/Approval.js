@@ -21,3 +21,6 @@ function approve(){
    //check in the back end if this date - current day
    //closer than a week away set a priority .
 }
+function logout(){
+    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/index.html";
+}

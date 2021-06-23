@@ -7,6 +7,8 @@
     <title>Approval</title>
 </head>
 <body>
+    <h3>Benefits Corporation</h3>
+    <div id ="container">
     <form id = "approve">
         <!-- Reason role id might need to switch on role to send it what it needs-->
         Reason : <input type = "text"id = "reason"><br>
@@ -16,11 +18,13 @@
             <option value = "departmentHead"id ="dh">Department Head</option>
             <option value ="BenCo"id ="bc">Benefits Coordinator</option>
         </select><br>
-        Id of request:<input type = "number"id = "id">
-        <button type = "button"onclick="approve()">Approve Request</button>
+        Id of request:<input type = "number"id = "id"><br>
+        <button type = "button"onclick="approve()">Approve Request</button><br>
+        <button type ="button"onclick="logout()">Logout</button>
     </form>
     
-
+</div>
 </body>
 <script src="approval.js"></script>
+<link rel = "stylesheet"href="styles.css">
 </html>
