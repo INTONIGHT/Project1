@@ -1,0 +1,16 @@
+h1{
+    position: relative;
+    left:300px;
+    font-weight: 800;
+}
+#container{
+    position:relative;
+    left:300px
+}
+h3{
+    position: relative;
+    left:300px
+}
+body{
+    background-color: rgb(72, 176, 236);
+}
