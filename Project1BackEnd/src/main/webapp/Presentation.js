@@ -41,6 +41,7 @@ function approvePresentation(){
     let id = document.getElementById('approval_id').value;
     let reason = document.getElementById('reason').value;
     let approval = document.getElementsByName('choice');
+    let data = document.getElementById('output');
     let choice;
     for(let i =0;i<approval.length;i++){
         if(approval[i].checked){
@@ -58,7 +59,7 @@ function approvePresentation(){
     xhttp.onreadystatechange = () =>{
         if(xhttp.readyState == 4 && xhttp.status == 200){
             let response = xhttp.responseText;
-            console.log(response);
+            output.innerHTML = response;
         }
     }
 }

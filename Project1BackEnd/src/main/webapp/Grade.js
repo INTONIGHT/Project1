@@ -57,6 +57,7 @@ let approval = document.getElementsByName('choice');
     }
 let id = document.getElementById('approval_id').value;
 let reason = document.getElementById('reason').value;
+let data = document.getElementById('output');
 xhttp.open('POST',url);
 let approve = {id:id,reason:reason,approval:choice};
 approve = JSON.stringify(approve);
@@ -64,7 +65,7 @@ xhttp.send(approve);
 xhttp.onreadystatechange = () =>{
     if(xhttp.status == 200 && xhttp.readyState == 4){
 let response = xhttp.responseText;
-console.log(response);
+data.innerHTML = response;
     }
 }
 

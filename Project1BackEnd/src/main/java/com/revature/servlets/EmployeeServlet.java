@@ -133,19 +133,15 @@ public class EmployeeServlet extends HttpServlet{
 		//System.out.println(g.grade + g.id);
 		
 		boolean b = sdao.sendGrade(g.grade, g.id);
+		response.getWriter().append("grade "+g.grade+" has been sent with a response of "+!b);
 		
-		if(b) {
-			//System.out.println("yeah");
-		}
 		break;
 	case "/approveGrade":
 		//this didnt work to fix it
 		Grade g1 = this.gson.fromJson(request.getReader(), Grade.class);
 		
 		boolean b2 = sdao.approveGrade(g1.id,g1.reason,g1.approval);
-		if(b2) {
-			//System.out.println("grade approved");
-		}
+		response.getWriter().append("approveGrade was sent with a response of "+!b2);
 		break;
 	case "/getGrade":
 		 int approval_id = this.gson.fromJson(request.getReader(),Integer.class);
@@ -155,6 +151,7 @@ public class EmployeeServlet extends HttpServlet{
 	case "/createPresentation":
 		Presentation p = this.gson.fromJson(request.getReader(),Presentation.class);
 		boolean b1 = sdao.sendPresentation( p.id,p.presentation);
+		response.getWriter().append("presentation has been sent with a response of "+!b1);
 		break;
 	case "/getPresentation":
 		Presentation p1 = this.gson.fromJson(request.getReader(), Presentation.class);
@@ -165,6 +162,7 @@ public class EmployeeServlet extends HttpServlet{
 		Presentation p2 = this.gson.fromJson(request.getReader(), Presentation.class);
 		
 		boolean b3 = sdao.approvePresentation(p2.id, p2.reason, p2.approval);
+		response.getWriter().append("presentation has been approved with a response of "+!b3);
 		break;
 	default:{
 			System.out.println("default case");
