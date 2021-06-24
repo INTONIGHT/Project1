@@ -44,16 +44,21 @@ xhttp.onreadystatechange = () =>{
 }
 function approveGrade(){
 url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/approveGrade"
-let approval = document.getElementById("approve").value;
-if(approval == "approve"){
-    approval = true;
-}else{
-    approval = false;
-}
+let approval = document.getElementsByName('choice');
+    let choice;
+    for(let i =0;i<approval.length;i++){
+        if(approval[i].checked){
+           if(approval[i].value=="approve"){
+               choice = true;
+           }else if(approval[i].value =="reject"){
+               choice = false;
+           }
+        }
+    }
 let id = document.getElementById('approval_id').value;
 let reason = document.getElementById('reason').value;
 xhttp.open('POST',url);
-let approve = {id:id,reason:reason,approval:approval};
+let approve = {id:id,reason:reason,approval:choice};
 approve = JSON.stringify(approve);
 xhttp.send(approve);
 xhttp.onreadystatechange = () =>{
