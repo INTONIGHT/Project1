@@ -62,6 +62,7 @@ function setButtons(){
     let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo";
     let buttonSet = document.getElementById('button');
     let buttonSet1 = document.getElementById('button1');
+    let department = document.getElementById('nonEmployee');
     let xhttp = new XMLHttpRequest();
     xhttp.open('GET',url);
     xhttp.send();
@@ -71,6 +72,7 @@ function setButtons(){
             if(response.role == "directSupervisor" || response.role == "departmentHead" || response.role == "benfitsCoordinator"){
                 buttonSet.style.display = 'block';
                 buttonSet1.style.display = 'block';
+                department.style.display = "block";
             }
 
 }
