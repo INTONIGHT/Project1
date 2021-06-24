@@ -33,13 +33,14 @@ function getInfo(){
     let dep = document.getElementById('ds');
     let dir = document.getElementById('dh');
     let benc = document.getElementById('bc');
+    
     let xhttp = new XMLHttpRequest();
     xhttp.open('GET',url);
     xhttp.send();
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
             let response = JSON.parse(xhttp.responseText);
-            console.log(response.role);
+            
             switch(response.role){
                 //directsupervisor,departmentHead,benefitsCoordinator
                 case "directSupervisor":
@@ -53,9 +54,29 @@ function getInfo(){
                     benc.style.display = 'block';
                     break;
             }
+            
         }
     }
 }
+function setButtons(){
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo";
+    let buttonSet = document.getElementById('button');
+    let buttonSet1 = document.getElementById('button1');
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('GET',url);
+    xhttp.send();
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.status == 200 && xhttp.readyState == 4){
+            let response = JSON.parse(xhttp.responseText);
+            if(response.role == "directSupervisor" || response.role == "departmentHead" || response.role == "benfitsCoordinator"){
+                buttonSet.style.display = 'block';
+                buttonSet1.style.display = 'block';
+            }
+
+}
+    }
+}
+
 function logout(){
     window.location = "index.html";
 }

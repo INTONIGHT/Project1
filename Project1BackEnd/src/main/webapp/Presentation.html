@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentations</title>
 </head>
-<body>
+<body onload = "setButtons()">
   <h3> Benefits Corporation</h3>
   <div id ="container">
     Id of Presentation <input type = "number" id = "approval_id"><br>
@@ -25,11 +25,13 @@
     Presentation: <input type = "text"id ="presentation"><br>
     <button type = "button" onclick = "sendPresentation()">Send Presentation</button><br>
     <button type = "button" onclick = "getPresentation()"> Get presentation</button><br>
-    <button type = "button" onclick = "approvePresentation()">Approve Presentation</button><br>
+    <button type = "button" id ="button"style="display:none"onclick = "approvePresentation()">Approve Presentation</button><br>
+    <button type = "button" id ="button1"style="display:none"onclick = "goToApprove()">Go To approve</button><br>
     <button type ="button"onclick = "goToRequest()">Go to Requests</button>
   </div>
     <div id ="output"></div>
 </body>
 <script src = 'Presentation.js'></script>
+<script src="Approval.js"></script>
 <link rel = "stylesheet"href="styles.css">
 </html>

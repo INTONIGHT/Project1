@@ -60,3 +60,6 @@ function approvePresentation(){
 function goToRequest(){
     window.location ="CreateRequest.html";
 }
+function goToApprove(){
+    window.location = "Approve.html";
+}
