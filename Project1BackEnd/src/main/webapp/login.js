@@ -1,5 +1,6 @@
 function login(){
     //use this for testing purposes
+    //go here to start:http://localhost:8080/Project1BackEnd/
    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/login";
    let xhttp = new XMLHttpRequest();
    
@@ -30,7 +31,10 @@ function login(){
                 //C:/Users/User/Desktop
                window.location="CreateRequest.html";
             }if(role == "directSupervisor"||role == "departmentHead"||role == "BenCo"){
-                window.location.href ="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Approval.html";
+                window.location ="Approval.html";
+                //Admin password
+                //ADmin 12345
+                //BenCo password
             }
            }};
        //Employee [id=1, username=Tyler, password=Password, role=Employee, balance=1000.0]
