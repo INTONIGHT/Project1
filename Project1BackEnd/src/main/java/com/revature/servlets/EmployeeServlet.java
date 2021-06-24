@@ -48,7 +48,7 @@ public class EmployeeServlet extends HttpServlet{
 	SubmissionDAO sdao = new SubmissionDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
-	//public static HttpSession session;
+	public static HttpSession session;
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet{
 		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		System.out.println(session.getId());
 		
 		
@@ -113,8 +113,8 @@ public class EmployeeServlet extends HttpServlet{
 		Driver dr = new Driver();
 		//ideally you want to get from session or something like that
 		
-		//Employee e = (Employee) session.getAttribute("login");
-		
+		Employee e = (Employee) session.getAttribute("login");
+		System.out.println(e);
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
 		//double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
