@@ -76,7 +76,8 @@ public class EmployeeDAO {
 				break;
 			}
 			ps.setString(2, reason);
-			if(role == "BenCo") {
+			
+			if(role.equals("BenCo") ) {
 				ps.setBoolean(3, true);
 			}else {
 				ps.setBoolean(3, false);

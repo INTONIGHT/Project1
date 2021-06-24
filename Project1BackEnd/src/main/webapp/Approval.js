@@ -47,7 +47,7 @@ function getInfo(){
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
             let response = JSON.parse(xhttp.responseText);
-            
+            console.log(response.role);
             switch(response.role){
                 //directsupervisor,departmentHead,benefitsCoordinator
                 case "directSupervisor":
@@ -57,7 +57,7 @@ function getInfo(){
                 case 'departmentHead':
                     dir.style.display = 'block';
                     break;
-                case 'benefitsCoordinator':
+                case 'BenCo':
                     benc.style.display = 'block';
                     break;
             }

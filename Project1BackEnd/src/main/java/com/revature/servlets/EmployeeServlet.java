@@ -104,7 +104,7 @@ public class EmployeeServlet extends HttpServlet{
 		break;
 	case "/approve":
 		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
-		
+		System.out.println(info1.role);
 		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id,info1.approve);
 		
 		//System.out.println(info1.reason + info1.role+ info1.id);
