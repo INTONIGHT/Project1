@@ -56,11 +56,15 @@ public class EmployeeServlet extends HttpServlet{
 		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
-
-		switch(uri) {
+		session = request.getSession();
+				switch(uri) {
 		
-			
-			default:
+				case"/getInfo":
+					Employee user = (Employee)session.getAttribute("login");
+					response.getWriter().append(gson.toJson(user));	
+					System.out.println(user + " user from getInfo");
+					break;
+				default:
 				System.out.println("default case");
 		}
 		

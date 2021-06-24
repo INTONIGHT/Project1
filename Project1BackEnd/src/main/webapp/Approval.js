@@ -28,7 +28,18 @@ function approve(){
    //check in the back end if this date - current day
    //closer than a week away set a priority .
 }
-
+function getInfo(){
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo"
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('GET',url);
+    xhttp.send();
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.status == 200 && xhttp.readyState == 4){
+            let response = (xhttp.responseText);
+            console.log(response);
+        }
+    }
+}
 function logout(){
     window.location = "index.html";
 }
