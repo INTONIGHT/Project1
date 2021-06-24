@@ -122,7 +122,7 @@ public class EmployeeServlet extends HttpServlet{
 		//uncomment this just to not populate my database
 		//System.out.println(amt);
 		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
-		response.getWriter().append(amt + "has been requested");
+		response.getWriter().append(amt + " has been requested");
 		break;
 	case "/createGrade":
 		Grade g = this.gson.fromJson(request.getReader(), Grade.class);
