@@ -67,3 +67,6 @@ console.log(response);
 function goToRequest(){
     window.location ="CreateRequest.html";
 }
+function goToApprove(){
+    window.location = "Approval.html";
+}
