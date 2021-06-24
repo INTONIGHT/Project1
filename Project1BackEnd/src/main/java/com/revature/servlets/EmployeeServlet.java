@@ -23,6 +23,7 @@ public class EmployeeServlet extends HttpServlet{
 		public int id;
 		public String reason;
 		public String role;
+		public boolean approve;
 	}
 	class getRequest{
 		public int user_id;
@@ -100,12 +101,10 @@ public class EmployeeServlet extends HttpServlet{
 	case "/approve":
 		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
 		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id);
-		System.out.println(info1.reason + info1.role+ info1.id);
+		
+		//System.out.println(info1.reason + info1.role+ info1.id);
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		if(!success) {
-			System.out.println("yeah");
-			
-		}
+		
 		response.getWriter().append("Hello there");
 		break;
 	case "/createRequest":

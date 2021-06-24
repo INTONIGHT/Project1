@@ -57,7 +57,7 @@ public class EmployeeDAO {
 		return false;
 	}
 	public boolean approveRequest(String reason,String role,int id) {
-		String sql = "update requests set approvalstage = ?,reason = ? where id = ?;";
+		String sql = "update requests set approvalstage = ?,reason = ?,approvalstatus=? where id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			//roles are department head direct supervisor and benco
@@ -76,7 +76,12 @@ public class EmployeeDAO {
 				break;
 			}
 			ps.setString(2, reason);
-			ps.setInt(3, id);
+			if(role == "BenCo") {
+				ps.setBoolean(3, true);
+			}else {
+				ps.setBoolean(3, false);
+			}
+			ps.setInt(4, id);
 			boolean success = ps.execute();
 			if(success) {
 				return true;

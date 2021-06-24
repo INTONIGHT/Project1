@@ -8,7 +8,7 @@
     <script src="Approval.js"></script>
 <link rel = "stylesheet"href="styles.css">
 </head>
-<body>
+<body onload>
     <h3>Benefits Corporation</h3>
     <div id ="container">
     <form id = "approve">
@@ -20,6 +20,10 @@
             <option value = "departmentHead"id ="dh">Department Head</option>
             <option value ="BenCo"id ="bc">Benefits Coordinator</option>
         </select><br>
+        Approval:<input type = "radio"id = "approval"value ="approve"name ="approval">
+        <label for ="approve">Approve</label>
+        <input type = "radio"id ="reject"value ="reject"name="approval">
+        <label for ="reject">Reject</label><br>
         Id of request:<input type = "number"id = "id"><br>
         <button type = "button"onclick="approve()">Approve Request</button><br>
         <button type ="button"onclick="goToGrade()">Go to Grades</button><br>
