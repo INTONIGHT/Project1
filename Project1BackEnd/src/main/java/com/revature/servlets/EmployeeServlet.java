@@ -48,7 +48,7 @@ public class EmployeeServlet extends HttpServlet{
 	SubmissionDAO sdao = new SubmissionDAO();
 	private Gson gson = new Gson();
 	//i might have to modify this later on im going based on class code
-	public static HttpSession session;
+	//public static HttpSession session;
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String uri = request.getRequestURI();
@@ -70,7 +70,10 @@ public class EmployeeServlet extends HttpServlet{
 		uri = uri.substring("/Project1BackEnd/EmployeeServlet".length());
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
-		session = request.getSession(); 
+		HttpSession session = request.getSession();
+		System.out.println(session.getId());
+		
+		
 		switch(uri) {
 		
 		case "/requests":
@@ -87,9 +90,10 @@ public class EmployeeServlet extends HttpServlet{
 		Login info = this.gson.fromJson(request.getReader(), Login.class);
 		
 		Employee test = edao.Login(info.username,info.password);
-		
+//		session = request.getSession();
 		session.setAttribute("login", test);
-		
+		System.out.println(session.getId());
+		System.out.println(session.getAttribute("login"));
 		response.getWriter().append(gson.toJson(test));
 		
 		break;
@@ -108,14 +112,15 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Driver dr = new Driver();
 		//ideally you want to get from session or something like that
-		Employee e = (Employee) session.getAttribute("login");
-		System.out.println(session.getAttribute("login"));
+		
+		//Employee e = (Employee) session.getAttribute("login");
+		
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
-		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		//double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
 		//uncomment this just to not populate my database
-		System.out.println(amt);
-		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
+		//System.out.println(amt);
+		//edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
 		break;
 	case "/createGrade":
 		Grade g = this.gson.fromJson(request.getReader(), Grade.class);

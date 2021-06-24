@@ -19,7 +19,7 @@ function login(){
            if(xhttp.status == 200 && xhttp.readyState == 4){
             //id username password role balance.
             let response = JSON.parse(xhttp.responseText);
-            
+            setCookie("Login",response);
             //we would switch here to what we want to do
             //dont know it yet.
             
@@ -36,4 +36,7 @@ function login(){
        
        
    
+}
+function setCookie(name,value){
+    document.cookie = name +"="+value+';'+";path=/";
 }
