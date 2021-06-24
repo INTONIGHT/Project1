@@ -37,14 +37,14 @@ function readData(){
     console.log(data);
 }
 function goToRequests(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Employee.html";
+    window.location = "Employee.html";
 }
 function goToGrades(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Grade.html";
+    window.location = "Grade.html";
 }
 function goToPresentations(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Presentation.html";
+    window.location = "Presentation.html";
 }
 function logout(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/index.html";
+    window.location = "index.html";
 }

@@ -22,11 +22,11 @@ function approve(){
    //closer than a week away set a priority .
 }
 function logout(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/index.html";
+    window.location = "index.html";
 }
 function goToGrade(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Grade.html";
+    window.location = "Grade.html";
 }
 function goToPresentation(){
-    window.location.href = "C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Presentation.html";
+    window.location = "Presentation.html";
 }
