@@ -19,6 +19,7 @@ function approve(){
     
     
    let approve ={reason:reason,role:role,id:id,approve:choice};
+   let data = document.getElementById('data');
    approve = JSON.stringify(approve);
    xhttp.open('POST',url);
    xhttp.send(approve);
@@ -26,7 +27,7 @@ function approve(){
    xhttp.onreadystatechange = () =>{
        if(xhttp.status == 200 && xhttp.readyState == 4){
            let response = (xhttp.responseText);
-           console.log(response);
+           data.innerHTML = response;
            
        }
    }
