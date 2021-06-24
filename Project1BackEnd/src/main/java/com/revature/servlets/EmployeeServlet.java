@@ -118,10 +118,11 @@ public class EmployeeServlet extends HttpServlet{
 		System.out.println("employee from request");
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
-		//double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
 		//uncomment this just to not populate my database
 		//System.out.println(amt);
-		//edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
+		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
+		response.getWriter().append(amt + "has been requested");
 		break;
 	case "/createGrade":
 		Grade g = this.gson.fromJson(request.getReader(), Grade.class);

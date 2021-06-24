@@ -1,4 +1,5 @@
 function login(){
+    //use this for testing purposes
    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/login";
    let xhttp = new XMLHttpRequest();
    
@@ -26,7 +27,8 @@ function login(){
             let role = response.role;
             
             if(role == "Employee"){
-               window.location,href="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/CreateRequest.html";
+                //C:/Users/User/Desktop
+               window.location="CreateRequest.html";
             }if(role == "directSupervisor"||role == "departmentHead"||role == "BenCo"){
                 window.location.href ="C:/Users/User/Desktop/Project1/Project1BackEnd/src/main/webapp/Approval.html";
             }
