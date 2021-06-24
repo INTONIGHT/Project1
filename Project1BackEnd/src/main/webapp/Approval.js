@@ -29,14 +29,30 @@ function approve(){
    //closer than a week away set a priority .
 }
 function getInfo(){
-    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo"
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo";
+    let dep = document.getElementById('ds');
+    let dir = document.getElementById('dh');
+    let benc = document.getElementById('bc');
     let xhttp = new XMLHttpRequest();
     xhttp.open('GET',url);
     xhttp.send();
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
-            let response = (xhttp.responseText);
-            console.log(response);
+            let response = JSON.parse(xhttp.responseText);
+            console.log(response.role);
+            switch(response.role){
+                //directsupervisor,departmentHead,benefitsCoordinator
+                case "directSupervisor":
+                    
+                    dep.style.display = 'block';
+                    break;
+                case 'departmentHead':
+                    dir.style.display = 'block';
+                    break;
+                case 'benefitsCoordinator':
+                    benc.style.display = 'block';
+                    break;
+            }
         }
     }
 }
