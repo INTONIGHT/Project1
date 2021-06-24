@@ -4,13 +4,21 @@ function approve(){
     let reason = document.getElementById('reason').value;
     let role = document.getElementById('role').value;
     let id = document.getElementById('id').value;
-    let approval = document.getElementById('approval').value;
-    if(approval == "approve"){
-        approval = true;
-    }else{
-        approval = false;
+    let approval = document.getElementsByName('choice');
+    let choice;
+    for(let i =0;i<approval.length;i++){
+        if(approval[i].checked){
+           if(approval[i].value=="approve"){
+               choice = true;
+           }else if(approval[i].value =="reject"){
+               choice = false;
+           }
+        }
     }
-   let approve ={reason:reason,role:role,id:id,approve:approval};
+    
+    
+    
+   let approve ={reason:reason,role:role,id:id,approve:choice};
    approve = JSON.stringify(approve);
    xhttp.open('POST',url);
    xhttp.send(approve);
@@ -19,9 +27,7 @@ function approve(){
        if(xhttp.status == 200 && xhttp.readyState == 4){
            let response = (xhttp.responseText);
            console.log(response);
-           //put a relative path in there.
-           //httpsession.
-           //window.location.assign('')
+           
        }
    }
    //Make a date object when they create a date object

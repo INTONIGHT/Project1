@@ -62,7 +62,7 @@ public class EmployeeServlet extends HttpServlet{
 				case"/getInfo":
 					Employee user = (Employee)session.getAttribute("login");
 					response.getWriter().append(gson.toJson(user));	
-					System.out.println(user + " user from getInfo");
+					//System.out.println(user + " user from getInfo");
 					break;
 				default:
 				System.out.println("default case");
@@ -76,7 +76,7 @@ public class EmployeeServlet extends HttpServlet{
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
 		session = request.getSession();
-		System.out.println(session.getId());
+		//System.out.println(session.getId());
 		
 		
 		switch(uri) {
@@ -97,19 +97,20 @@ public class EmployeeServlet extends HttpServlet{
 		Employee test = edao.Login(info.username,info.password);
 //		session = request.getSession();
 		session.setAttribute("login", test);
-		System.out.println(session.getId());
-		System.out.println(session.getAttribute("login"));
+		//System.out.println(session.getId());
+		//System.out.println(session.getAttribute("login"));
 		response.getWriter().append(gson.toJson(test));
 		
 		break;
 	case "/approve":
 		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
-		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id);
+		
+		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id,info1.approve);
 		
 		//System.out.println(info1.reason + info1.role+ info1.id);
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		
-		response.getWriter().append("Hello there");
+		response.getWriter().append(" your response has been sent with a result of "+ !success);
 		break;
 	case "/createRequest":
 		
@@ -117,8 +118,8 @@ public class EmployeeServlet extends HttpServlet{
 		//ideally you want to get from session or something like that
 		
 		Employee e = (Employee) session.getAttribute("login");
-		System.out.println(e);
-		System.out.println("employee from request");
+		//System.out.println(e);
+		//System.out.println("employee from request");
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
@@ -134,7 +135,7 @@ public class EmployeeServlet extends HttpServlet{
 		boolean b = sdao.sendGrade(g.grade, g.id);
 		
 		if(b) {
-			System.out.println("yeah");
+			//System.out.println("yeah");
 		}
 		break;
 	case "/approveGrade":
@@ -143,7 +144,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		boolean b2 = sdao.approveGrade(g1.id,g1.reason,g1.approval);
 		if(b2) {
-			System.out.println("grade approved");
+			//System.out.println("grade approved");
 		}
 		break;
 	case "/getGrade":
