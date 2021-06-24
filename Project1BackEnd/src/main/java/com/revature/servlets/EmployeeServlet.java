@@ -115,6 +115,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Employee e = (Employee) session.getAttribute("login");
 		System.out.println(e);
+		System.out.println("employee from request");
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
 		//double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());

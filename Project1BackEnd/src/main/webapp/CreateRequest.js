@@ -3,8 +3,7 @@ function sendRequest(){
     let xhttp = new XMLHttpRequest();
     let type = document.getElementById('type').value;
     let amount = document.getElementById('amount').value;
-    let decodedCookie = decodeURIComponent(document.cookie);
-    console.log(decodedCookie);
+    
     let request = document.getElementById('request').value;
     let body = {type:type,amtReq:amount,request:request};
     body = JSON.stringify(body);
@@ -20,6 +19,7 @@ function sendRequest(){
 function getCookie(cname){
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
     let ca = decodedCookie.split(';');
     for(let i =0;i<ca.length;i++){
         let c = ca[i];
