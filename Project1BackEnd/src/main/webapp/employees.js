@@ -67,6 +67,20 @@ function retrieveData(){
     }
 }
 }
+function getInfo(){
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo";
+   
+    
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('GET',url);
+    xhttp.send();
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.status == 200 && xhttp.readyState == 4){
+            let response = JSON.parse(xhttp.responseText);
+            //document.documentElement
+        }
+    }
+}
 function goToCreate(){
     window.location ="CreateRequest.html";
 }
