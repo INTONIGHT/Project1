@@ -3,7 +3,7 @@ let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/requests";
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = retrieveData;
 xhttp.open('POST',url);
-let user_id = document.getElementById('user_id').value;
+let user_id = document.getElementById('login').value;
 
 
 id = JSON.stringify(user_id);
@@ -77,7 +77,11 @@ function getInfo(){
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
             let response = JSON.parse(xhttp.responseText);
+            //console.log(response.id);
+            let stuff = document.getElementById('login');
+            stuff.value = response.id;
             //document.documentElement
+            //try to set the employee id here.
         }
     }
 }

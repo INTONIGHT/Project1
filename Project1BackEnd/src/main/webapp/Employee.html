@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee</title>
 </head>
-<body>
+<body onload="getInfo()">
     <h3>Benefits Corportation</h3>
     <div id ="container">
-    Id to get: <input type = "number"id = "user_id"><br>
+    
     <button type = "button" onclick= "getData()">
     Get Requests
     </button><br>
@@ -18,6 +18,7 @@
     </button>
 </div>
     <div id = "data"></div>
+    <input type="number" id ="login"style="display:none"></div>
 </body>
 <script src = "employees.js"></script>
 <link rel = "stylesheet"href="styles.css">
