@@ -15,7 +15,10 @@ function approve(){
            }
         }
     }
-    
+    console.log(role);
+    if (role == "BenCo"){
+       
+    }
     
     
    let approve ={reason:reason,role:role,id:id,approve:choice};

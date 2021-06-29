@@ -62,6 +62,12 @@ function retrieveData(){
                 tR.innerHTML = employee.reason;
                 tr.appendChild(tR);
                employeeTable.appendChild(tr);
+               //date requested for
+               //if the request is approved
+               let tAp = document.createElement('td');
+               tAp.innerHTML = employee.approval;
+               tdId.appendChild(tAp);
+               
            }
            dataSection.appendChild(employeeTable);
     }

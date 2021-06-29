@@ -96,6 +96,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Employee test = edao.Login(info.username,info.password);
 //		session = request.getSession();
+		System.out.println(info.username + ""+info.password);
 		session.setAttribute("login", test);
 		//System.out.println(session.getId());
 		//System.out.println(session.getAttribute("login"));
