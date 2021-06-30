@@ -16,12 +16,13 @@ function approve(){
         }
     }
     if (role=="BenCo"){
-         let result = getGradeInfo();
+         getGradeInfo();
+         let res = document.getElementById('value');
+         console.log(res);
          
-         console.log(result,"this is the result");
-         if(result == true){
-             console.log('yeah');
-         }
+        //  if(result == "true"){
+        //      console.log('yeah');
+        //  }
          getPresentationInfo();
          
     }
@@ -57,10 +58,11 @@ function getGradeInfo(){
             //now what you have to do is find the true or false or just send it here.
             //console.log(response);
             if(response == "true"){
-                console.log("response was true");
-                return 1;
+                let value = document.getElementById('value');
+                 value.innerHTML = "true";
+                return;
             }else{
-                return 0;
+                return false;
             }
         }
     }
@@ -75,7 +77,7 @@ function getPresentationInfo(){
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
             let response = (xhttp.responseText);
-            console.log(response);
+            //console.log(response);
         }
     }
 }
