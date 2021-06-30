@@ -15,9 +15,10 @@ function approve(){
            }
         }
     }
-    console.log(role);
-    if (role == "BenCo"){
-       
+    if (role=="BenCo"){
+         getEmployeeInfo();
+         getPresentationInfo();
+         
     }
     
     
@@ -37,6 +38,34 @@ function approve(){
    //Make a date object when they create a date object
    //check in the back end if this date - current day
    //closer than a week away set a priority .
+}
+function getGradeInfo(){
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getGradeInfo";
+    let id = document.getElementById('id').value;
+    let xhttp = new XMLHttpRequest();
+    id = JSON.stringify(id);
+    xhttp.open('POST',url);
+    xhttp.send(id);
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.status == 200 && xhttp.readyState == 4){
+            let response = (xhttp.responseText);
+            console.log(response);
+        }
+    }
+}
+function getPresentationInfo(){
+    let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getPresentationInfo";
+    let id = document.getElementById('id').value;
+    id = JSON.stringify(id);
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('POST',url);
+    xhttp.send(id);
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.status == 200 && xhttp.readyState == 4){
+            let response = (xhttp.responseText);
+            console.log(response);
+        }
+    }
 }
 function getInfo(){
     let url = "http://localhost:8080/Project1BackEnd/EmployeeServlet/getInfo";

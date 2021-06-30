@@ -126,7 +126,38 @@ public class SubmissionDAO implements Presentations, Grades{
 		return "no grade found";
 	}
 	//remove this
-	
+	public boolean getGradeApproval(int id) {
+		String sql = "select approval from grades where id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				boolean result = rs.getBoolean("approval");
+				return result;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean getPresentationApproval(int id) {
+		String sql = "select approval from presentations where id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				boolean result = rs.getBoolean("approval");
+				return result;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 
 }

@@ -64,6 +64,7 @@ public class EmployeeServlet extends HttpServlet{
 					response.getWriter().append(gson.toJson(user));	
 					//System.out.println(user + " user from getInfo");
 					break;
+				
 				default:
 				System.out.println("default case");
 		}
@@ -96,7 +97,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Employee test = edao.Login(info.username,info.password);
 //		session = request.getSession();
-		System.out.println(info.username + ""+info.password);
+		//System.out.println(info.username + ""+info.password);
 		session.setAttribute("login", test);
 		//System.out.println(session.getId());
 		//System.out.println(session.getAttribute("login"));
@@ -164,6 +165,17 @@ public class EmployeeServlet extends HttpServlet{
 		
 		boolean b3 = sdao.approvePresentation(p2.id, p2.reason, p2.approval);
 		response.getWriter().append("presentation has been approved with a response of "+!b3);
+		break;
+	case "/getGradeInfo":
+		int user_id = this.gson.fromJson(request.getReader(), Integer.class);
+		boolean gradeResult = sdao.getGradeApproval(user_id);
+		//boolean presentationResult = sdao.getPresentationApproval(user_id);
+		response.getWriter().append("Grade of id was :"+gradeResult);
+		break;
+	case "/getPresentationInfo":
+		int user_id1 = this.gson.fromJson(request.getReader(), Integer.class);
+		boolean presentationResult = sdao.getGradeApproval(user_id1);
+		response.getWriter().append("Presentation of id was :"+presentationResult);
 		break;
 	default:{
 			System.out.println("default case");
