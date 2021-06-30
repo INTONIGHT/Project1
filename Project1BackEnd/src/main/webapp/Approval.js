@@ -16,7 +16,12 @@ function approve(){
         }
     }
     if (role=="BenCo"){
-         getEmployeeInfo();
+         let result = getGradeInfo();
+         
+         console.log(result,"this is the result");
+         if(result == true){
+             console.log('yeah');
+         }
          getPresentationInfo();
          
     }
@@ -49,7 +54,14 @@ function getGradeInfo(){
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
             let response = (xhttp.responseText);
-            console.log(response);
+            //now what you have to do is find the true or false or just send it here.
+            //console.log(response);
+            if(response == "true"){
+                console.log("response was true");
+                return 1;
+            }else{
+                return 0;
+            }
         }
     }
 }
