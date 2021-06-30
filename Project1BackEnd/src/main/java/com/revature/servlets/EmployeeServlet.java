@@ -170,12 +170,12 @@ public class EmployeeServlet extends HttpServlet{
 		int user_id = this.gson.fromJson(request.getReader(), Integer.class);
 		boolean gradeResult = sdao.getGradeApproval(user_id);
 		//boolean presentationResult = sdao.getPresentationApproval(user_id);
-		response.getWriter().append("Grade of id was :"+gradeResult);
+		response.getWriter().append(""+gradeResult);
 		break;
 	case "/getPresentationInfo":
 		int user_id1 = this.gson.fromJson(request.getReader(), Integer.class);
 		boolean presentationResult = sdao.getGradeApproval(user_id1);
-		response.getWriter().append("Presentation of id was :"+presentationResult);
+		response.getWriter().append(""+presentationResult);
 		break;
 	default:{
 			System.out.println("default case");
