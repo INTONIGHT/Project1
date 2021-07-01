@@ -102,8 +102,7 @@ function getInfo(){
     let dep = document.getElementById('ds');
     let dir = document.getElementById('dh');
     let benc = document.getElementById('bc');
-    let approval = document.getElementById('signoff');
-    approval.disabled = true;
+    
     let xhttp = new XMLHttpRequest();
     xhttp.open('GET',url);
     xhttp.send();
@@ -122,11 +121,13 @@ function getInfo(){
                     break;
                 case 'BenCo':
                     benc.style.display = 'block';
+                   
                     break;
             }
             if (response.role=="BenCo"){
                 alert('please do get presentation and get grade before sending the request');
-                 
+                let approval = document.getElementById('signoff');
+                approval.disabled = true;
             }
         }
     }
