@@ -95,7 +95,7 @@ function getById(){
         let thRow = document.createElement('tr');
         let tHeaders = ['Id','Request Type','User Request',
                         'Approval Stage','Approval Status','Amount',
-                    'Reason'    ];
+                    'Reason','Urgent'    ];
                for( let h of tHeaders){
                    let th = document.createElement('th');
                    th.innerHTML = h;
@@ -132,7 +132,13 @@ function getById(){
                     let tR = document.createElement('td');
                     tR.innerHTML = employee.reason;
                     tr.appendChild(tR);
+                    //urgent
+                   let tU = document.createElement('td');
+                   tU.innerHTML = employee.urgent;
+                   tr.appendChild(tU);
+                   //append the elements
                    employeeTable.appendChild(tr);
+                   
                 }
                 dataSection.appendChild(employeeTable);
          }
