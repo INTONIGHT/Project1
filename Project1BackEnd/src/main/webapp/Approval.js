@@ -15,17 +15,15 @@ function approve(){
            }
         }
     }
-    if (role=="BenCo"){
-         getGradeInfo();
-         let res = document.getElementById('value');
-         console.log(res);
-         
-        //  if(result == "true"){
-        //      console.log('yeah');
-        //  }
-         getPresentationInfo();
-         
-    }
+    
+    let test = document.getElementById('grade').textContent;
+    
+    //getPresentationInfo();
+    let test1 = document.getElementById('presentation').textContent;
+   if(test == true || test1 == true){
+      
+   
+   
     
     
    let approve ={reason:reason,role:role,id:id,approve:choice};
@@ -37,10 +35,15 @@ function approve(){
    xhttp.onreadystatechange = () =>{
        if(xhttp.status == 200 && xhttp.readyState == 4){
            let response = (xhttp.responseText);
+          
            data.innerHTML = response;
            
        }
    }
+}
+else{
+    alert('please check the grade or presentation and then approve either before approving the request');
+}
    //Make a date object when they create a date object
    //check in the back end if this date - current day
    //closer than a week away set a priority .
@@ -54,15 +57,20 @@ function getGradeInfo(){
     xhttp.send(id);
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
+            let approval = document.getElementById('signoff');
+            approval.disabled = false;
             let response = (xhttp.responseText);
             //now what you have to do is find the true or false or just send it here.
             //console.log(response);
+           
             if(response == "true"){
-                let value = document.getElementById('value');
+                let value = document.getElementById('grade');
                  value.innerHTML = "true";
-                return;
+                
+                
             }else{
-                return false;
+                let value = document.getElementById('grade');
+                 value.innerHTML = "false";
             }
         }
     }
@@ -76,8 +84,16 @@ function getPresentationInfo(){
     xhttp.send(id);
     xhttp.onreadystatechange = () =>{
         if(xhttp.status == 200 && xhttp.readyState == 4){
+            let approval = document.getElementById('signoff');
+    approval.disabled = false;
             let response = (xhttp.responseText);
-            //console.log(response);
+           if(response == "true"){
+               let value = document.getElementById('presentation');
+               value.innerHTML = "true";
+           }else{
+               let value = document.getElementById('presentation');
+               value.innerHTML = "false";
+           }
         }
     }
 }
@@ -86,7 +102,8 @@ function getInfo(){
     let dep = document.getElementById('ds');
     let dir = document.getElementById('dh');
     let benc = document.getElementById('bc');
-    
+    let approval = document.getElementById('signoff');
+    approval.disabled = true;
     let xhttp = new XMLHttpRequest();
     xhttp.open('GET',url);
     xhttp.send();
@@ -107,7 +124,10 @@ function getInfo(){
                     benc.style.display = 'block';
                     break;
             }
-            
+            if (response.role=="BenCo"){
+                alert('please do get presentation and get grade before sending the request');
+                 
+            }
         }
     }
 }

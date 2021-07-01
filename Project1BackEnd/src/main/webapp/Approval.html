@@ -26,16 +26,16 @@
         <input type = "radio"id ="reject"value ="reject"name="choice">
         <label for ="reject">Reject</label><br>
         Id of request:<input type = "number"id = "id"><br>
-        <button type = "button"onclick="approve()"> Request SignOff</button><br>
+        <button type = "button"onclick="approve()"id ="signoff"> Request SignOff</button><br>
         <button type ="button"onclick="goToGrade()">Go to Grades</button><br>
         <button type ="button"onclick ="goToPresentation()">Go to Presentation</button><br>
         <button type ="button"onclick="logout()">Logout</button>
         <!--Remove these buttons-->
-        <button type = "button"onclick="getPresentationInfo()">get present</button><br>
-        <button type = "button"onclick="getGradeInfo()">get grade</button>
-        <p id ="value" style="display:none"></p>
-        <p id ="value1"style = 'display:none'></p>
+        <button type = "button"onclick="getPresentationInfo()">Get presentation</button><br>
+        <button type = "button"onclick="getGradeInfo()">Get grade</button>
         <div id ="data"></div>
+        <input id ="grade"type ="text"style="display:none">
+        <input id = "presentation"type="text"style="display:none">
     </form>
     
 </div>
