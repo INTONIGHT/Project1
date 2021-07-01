@@ -162,3 +162,6 @@ function goToGrade(){
 function goToPresentation(){
     window.location = "Presentation.html";
 }
+function goToRequest(){
+    window.location = "Employee.html"
+}

@@ -113,7 +113,7 @@ public class EmployeeDAO {
 	}
 	//get the list of requests assocaited with a certain id. then returns a list of those requests
 	public List<Requests> getRequests(int id) {
-		String sql = "select * from requests where r_id = ?;";
+		String sql = "select * from requests where r_id = ? order by urgent;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
