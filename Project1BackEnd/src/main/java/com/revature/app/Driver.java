@@ -32,7 +32,8 @@ public class Driver {
 		}
 		//i have to create a function that grabs any pending approvals.
 		//as well as awarded.
-		double available = e.getBalance() - edao.getReimbursement(e.getId());
+		double available = e.getBalance();
+		
 		if(tempvalue > available) {
 			if(role.equals("BenCo")) {
 				return tempvalue;

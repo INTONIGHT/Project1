@@ -15,8 +15,8 @@ SubmissionDAO sdao = new SubmissionDAO();
 		Employee e = edao.Login(username, password);
 		return e;
 	}
-	public boolean createRequest(String request,int userid,String requestType,double amt) {
-		boolean b = edao.createRequest(request, userid, requestType, amt);
+	public boolean createRequest(String request,int userid,String requestType,double amt,double urgent,double dueDate) {
+		boolean b = edao.createRequest(request, userid, requestType, amt,urgent,dueDate);
 		return b;
 	}
 	public double getReimbursement(int id) {

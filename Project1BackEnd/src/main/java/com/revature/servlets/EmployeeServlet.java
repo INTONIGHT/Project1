@@ -32,6 +32,8 @@ public class EmployeeServlet extends HttpServlet{
 		public String type;
 		public int amtReq;
 		public String request;
+		public double urgent;
+		public double dueDate;
 	}
 	class Grade{
 		public int id;
@@ -123,7 +125,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		Driver dr = new Driver();
 		//ideally you want to get from session or something like that
-		
+		//urgent is the diff
 		Employee e = (Employee) session.getAttribute("login");
 		//System.out.println(e);
 		//System.out.println("employee from request");
@@ -132,7 +134,9 @@ public class EmployeeServlet extends HttpServlet{
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
 		//uncomment this just to not populate my database
 		//System.out.println(amt);
-		edao.createRequest(userReq.request, e.getId(), userReq.type, amt);
+		//System.out.println("urgent: "+userReq.urgent+"dueDate: "+userReq.dueDate);
+		edao.createRequest(userReq.request, e.getId(), userReq.type, amt,userReq.urgent,userReq.dueDate);
+		System.out.println(amt);
 		response.getWriter().append(amt + " has been requested");
 		break;
 	case "/createGrade":

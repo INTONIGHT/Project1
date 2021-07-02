@@ -5,7 +5,14 @@ function sendRequest(){
     let amount = document.getElementById('amount').value;
     let data = document.getElementById('data');
     let request = document.getElementById('request').value;
-    let body = {type:type,amtReq:amount,request:request};
+    let dueDate = new Date(document.getElementById('due').value);
+    //gets the dte of today
+    let today = new Date();
+    let difference = dueDate.getTime() - today.getTime();
+    let dueDateNum = dueDate.getTime();
+    console.log(amount);
+    //1121464617
+    let body = {type:type,amtReq:amount,request:request,urgent:difference,dueDate:dueDateNum};
     body = JSON.stringify(body);
     xhttp.open('POST',url);
     xhttp.send(body);

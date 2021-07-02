@@ -38,8 +38,9 @@ public class EmployeeDAO {
 		return null;
 	}
 	//request type is based on the different types.
-	public boolean createRequest(String request,int userid,String requestType,double amt) {
-		String sql = "insert into requests values(default,?,false,?,?,'none','empty',?);";
+	public boolean createRequest(String request,int userid,String requestType,double amt,double urgent,double dueDate) {
+		//last value is amt
+		String sql = "insert into requests values(default,?,false,?,?,'none','empty',?,false,?,?);";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -47,6 +48,14 @@ public class EmployeeDAO {
 			ps.setInt(2, userid);
 			ps.setString(3, requestType);
 			ps.setDouble(4, amt);
+			//change this have to figure out what the value is of 2 weeks in milliseconds
+			if(urgent <= 1121464617) {
+				ps.setBoolean(5,true);
+			}
+			else {
+				ps.setBoolean(5, false);
+			}
+			ps.setDouble(6, dueDate);
 			boolean success = ps.execute();
 			if(success) {
 				return true;
