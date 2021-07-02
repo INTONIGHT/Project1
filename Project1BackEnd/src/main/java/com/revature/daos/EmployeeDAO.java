@@ -65,7 +65,7 @@ public class EmployeeDAO {
 		}
 		return false;
 	}
-	public boolean approveRequest(String reason,String role,int id,boolean approval) {
+	public boolean approveRequest(String reason,String role,int id,boolean approval,double amt) {
 		String sql = "update requests set approvalstage = ?,reason = ?,approvalstatus=?,approval = ? where id = ?;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -79,6 +79,8 @@ public class EmployeeDAO {
 				break;
 			case "BenCo":
 				ps.setString(1, "BenCo");
+				
+				boolean result = updateBalance(id,amt);
 				break;
 			default:
 				ps.setString(1, "none");
@@ -98,6 +100,39 @@ public class EmployeeDAO {
 				return true;
 			}
 			
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	public Employee getEmployeeById(int id) {
+		String sql = "select * from employees where id = ?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Employee e = new Employee();
+				e.setId(rs.getInt("id"));
+				e.setUsername(rs.getString("username"));
+				e.setPassword(rs.getString("password"));
+				e.setRole(rs.getString("role"));
+				e.setBalance(rs.getDouble("reimbursementamt"));
+				return e;
+			}
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	public boolean updateBalance(int id,double amt) {
+		String sql = "update employees set reimbursementamt = ? where id =?;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setDouble(1, amt);
+			ps.setInt(2, id);
+			ps.execute();
+			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

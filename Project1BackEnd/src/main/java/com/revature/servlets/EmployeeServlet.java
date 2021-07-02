@@ -113,8 +113,13 @@ public class EmployeeServlet extends HttpServlet{
 		break;
 	case "/approve":
 		Approve info1 = this.gson.fromJson(request.getReader(), Approve.class);
+		List<Requests> thing = edao.getRequests(info1.id);
+		Employee ex = edao.getEmployeeById(info1.id);
+		//not sure how to grab id might just try a hackey thing.
+		Requests userReq1 = thing.get(ex.getId());
+		double amtReq = ex.getBalance() - userReq1.getAmount();
 		
-		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id,info1.approve);
+		boolean success = edao.approveRequest(info1.reason, info1.role, info1.id,info1.approve,amtReq);
 		
 		//System.out.println(info1.reason + info1.role+ info1.id);
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -132,6 +137,7 @@ public class EmployeeServlet extends HttpServlet{
 		createRequest userReq = this.gson.fromJson(request.getReader(), createRequest.class);
 		
 		double amt = dr.getReimbursementAmount(e, userReq.type, userReq.amtReq, e.getRole());
+		
 		//uncomment this just to not populate my database
 		//System.out.println(amt);
 		//System.out.println("urgent: "+userReq.urgent+"dueDate: "+userReq.dueDate);

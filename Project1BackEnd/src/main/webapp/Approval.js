@@ -20,12 +20,8 @@ function approve(){
     
     //getPresentationInfo();
     let test1 = document.getElementById('presentation').textContent;
-   if(test == true || test1 == true){
-      
-   
-   
     
-    
+   if(test == "true" || test1 == "true"){
    let approve ={reason:reason,role:role,id:id,approve:choice};
    let data = document.getElementById('data');
    approve = JSON.stringify(approve);
