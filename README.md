@@ -1,3 +1,19 @@
 # Project1
-To run this project make sure to clone the repo into a local folder. You will need to open the Java side of things in a different IDE than for the Javascript and Html
-as I did not break the two up. Import your project and then run the tomcat server locally. Then go to localhost8080/project1backend and you should have it running
+## Project Description
+A banking applicaiton where a user can log in as an user or administrator. Can Use and manage accounts as a User and deposit, withdraw and transfer money between accounts as well as creating new accounts.
+# Technologies Used
+- Java
+- JavaScript
+- HTML
+- CSS
+- PostgreSQL
+# Features
+- Log in as a user
+- Create a new account
+- Log in as an administrator
+To-Do:
+- Let the admin more dynamically manage accounts.
+- Make a cleaner GUI for everyone.
+# Getting started
+- Git clone the code and then open up your IDE of choice.
+- Run the Tomcat server on the Java side of things than run the front end.
